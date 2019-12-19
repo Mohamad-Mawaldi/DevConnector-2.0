@@ -8,8 +8,10 @@ connectDB();
 
 app.get('/hello', (req, res) => res.send('API is running'));
 
-// Define Routes
+// Init Middleware
+app.use(express.json({ extended: false })); // body parser replacer (it's included in express)
 
+// Define Routes
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/posts', require('./routes/api/posts'));
 app.use('/api/auth', require('./routes/api/auth'));
